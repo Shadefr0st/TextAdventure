@@ -2,6 +2,10 @@ from player import Player
 import os
 from maps import ground_floor, second_floor
 
+
+
+compass = ["north", "south", "east", "west", "northwest", "northeast", "southwest", "southeast"]
+
 def start():
     name = input("Welcome! What's your name?\n")
     player = Player(name)
@@ -42,7 +46,11 @@ def main(player):
             continue
         match(action[0]):
             case "go":
-                if action[1] in current_floor[current_room]:
+                if action[1] not in compass:
+                    print("That's not a direction!")
+                    input("press enter to continue.....")
+                    continue
+                if action[1] in current_floor[current_room] and action[1]:
                     if (current_floor[current_room][action[1]] == "Safe Room" and current_floor["Study"]["locked"] == True):
                         print("The room is locked")
                         input("press enter to continue.....")

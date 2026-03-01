@@ -1,33 +1,272 @@
+attic = {
+    "Landing" : {
+        "description" : "A small landing with a single door to the east.",
+    },
+}
 
+
+fifth_floor = {
+    "Landing" : {
+        "description" : "A small landing with a single door to the east.",
+        "east" : "Hallway",
+    },
+    "Hallway" : {
+        "locked" : True,
+        "nlocked" : True,
+        "description" : "A long dilapidated hallway with askew pictures lining the walls. There's a white door\n"
+                        "at the east end. There is a locked door with a keypad and a bedroom door along the\n"
+                        "north wall (Northwest and Northeast) as well as a bedroom door and bathroom door along\n"
+                        "the south wall (Southwest and Southeast).",
+        "west" : "Landing",
+        "east" : "Staircase",
+        "northwest" : "Kid's Room",
+        "northeast" : "Master Bedroom",
+        "southwest" : "Office",
+        "southeast" : "Bathroom",
+        "pictures" : "insert lore here",
+    },
+    "Kid's Room" : {
+        "description" : "A young child's bedroom. There's a classic wooden wardrobe, a twin sized bed, and\n"
+                        "a toy box.",
+        "south" : "Hallway",
+        "wardrobe" : "It's empty.",
+        "bed" : "A neatly made twin sized bed with a duvet covered in cartoon characters.",
+        "toy box" : "A beat up plastic toy box. On top of the closed lid is a line of three toy soldiers with\n"
+                    "a gap between the first two.",
+    },
+    "Office" : {
+        "description" : "An old bedroom converted into an office. There's a classic wooden wardrobe, a twin\n"
+                        "sized bed, and an old desk.",
+        "north" : "Hallway",
+        "wardrobe" : "It's empty.",
+        "bed" : "A neatly made twin sized bed with a beige duvet.",
+        "desk" : "An old ornate wooden desk. It's bare except for a leather-bound journal.",
+        "journal" : "insert lore here",
+    },
+    "Master Bedroom" : {
+        "description" : "A large bedroom with a large classic wooden wardrobe and a queen sized bed\n"
+                        "with a night stand. There's also a window opposite the door.",
+        "south" : "Hallway",
+        "wardrobe" : "The wardrobe is filled with dress shirts.",
+        "bed" : "The bed was slopily made. It looks like whoever sleeps here sleeps on top of the white duvet.",
+        "night stand" : "It's empty.",
+        "window" : "From the second floor, I can see the whole back yard from this window. A rotted wooden\n"
+                   "fence surrounds an overgrown lawn. There's a divot in the yard where a tree used to stand.\n"
+                   "Towards the back of the yard is a rusted old swing set and in the corner is the remnants\n"
+                   "of a shed that has burned down.",
+    },
+    "Bathroom" : {
+        "description" : "A standard bathroom with a bathtub, toilet, sink, and medicine cabinet.",
+        "north" : "Hallway",
+        "bathtub" : "Yup, that's a bathtub.",
+        "toilet" : "Yup, that's a toilet.",
+        "sink" : "Yup, that's a sink.",
+        "cabinet" : "There's a white key in the cabinet.",
+        "item" : ["key"],
+    },
+    "Staircase" : {
+        "description" : "Up we go to the final floor.....",
+        "next_floor" : attic,
+    },
+}
+
+
+fourth_floor = {
+    "Landing" : {
+        "description" : "A small landing with a single door to the east.",
+        "east" : "Hallway",
+    },
+    "Hallway" : {
+        "locked" : True,
+        "description" : "A long hallway with pictures lining the walls. There's a red door at the east end.\n"
+                        "There are two bedroom doors along the north wall (Northwest and Northeast)\n"
+                        "as well as a bedroom door and bathroom door along the south wall (Southwest and Southeast).",
+        "west" : "Landing",
+        "east" : "Staircase",
+        "northwest" : "Kid's Room",
+        "northeast" : "Master Bedroom",
+        "southwest" : "Teen's Room",
+        "southeast" : "Bathroom",
+        "pictures" : "insert lore here",
+    },
+    "Kid's Room" : {
+        "description" : "A young child's bedroom. There's a classic wooden wardrobe, a twin sized bed, and\n"
+                        "a toy box.",
+        "south" : "Hallway",
+        "wardrobe" : "The wardrobe is full of hand-me-downs.",
+        "bed" : "A messy twin sized bed with a duvet covered in cartoon characters.",
+        "toy box" : "A beat up plastic toy box. Action figures and other toys are scattered around it.",
+    },
+    "Teen's Room" : {
+        "description" : "A neat bedroom with a classic wooden wardrobe, a twin sized bed, and an acoustic\n"
+                        "guitar propped up on a stand.",
+        "north" : "Hallway",
+        "wardrobe" : "It's filled with polos of varying colors.",
+        "bed" : "A made twin bed with a single stuffed animal on it.",
+        "guitar" : "I think I used to play one of these. This one seems well loved. There's a red key taped\n"
+                   "to the back of it.",
+        "item" : ["key"],
+    },
+    "Master Bedroom" : {
+        "description" : "A large bedroom with a large classic wooden wardrobe and a queen sized bed\n"
+                        "with a night stand. There's also a window opposite the door.",
+        "south" : "Hallway",
+        "wardrobe" : "The wardrobe is half filled with blouses and half filled with dress shirts.",
+        "bed" : "A queen sized bed that is neatly made with a red duvet.",
+        "night stand" : "It's empty.", #I'm gonna add bullets here later
+        "window" : "From the second floor, I can see the whole back yard from this window. A wooden\n"
+                   "privacy fence surrounds a slightly long lawn and a large tree stump. Towards the\n"
+                   "back of the yard is a swing set, and in the back corner is a small shed.",
+    },
+    "Bathroom" : {
+        "description" : "A standard bathroom with a bathtub, toilet, sink, and medicine cabinet.",
+        "north" : "Hallway",
+        "bathtub" : "Yup, that's a bathtub.",
+        "toilet" : "Yup, that's a toilet.",
+        "sink" : "Yup, that's a sink.",
+        "cabinet" : "There's a flashlight in the cabinet.",
+        "item" : ["flashlight"],
+    },
+    "Staircase" : {
+        "description" : "Up we go to the next floor.....",
+        "next_floor" : fifth_floor,
+    },
+}
+
+
+third_floor = {
+    "Landing" : {
+        "description" : "A small landing with a single door to the east.",
+        "east" : "Hallway",
+    },
+    "Hallway" : {
+        "locked" : True,
+        "description" : "A long hallway with pictures lining the walls. There's a blue door at the east end.\n"
+                        "There are two bedroom doors along the north wall (Northwest and Northeast)\n"
+                        "as well as a bedroom door and bathroom door along the south wall (Southwest and Southeast).",
+        "west" : "Landing",
+        "east" : "Staircase",
+        "northwest" : "Nursery",
+        "northeast" : "Master Bedroom",
+        "southwest" : "Bedroom",
+        "southeast" : "Bathroom",
+        "pictures" : "insert lore here",
+    },
+    "Nursery" : {
+        "description" : "A nursery with a classic wooden wardrobe and a crib.",
+        "south" : "Hallway",
+        "wardrobe" : "The wardrobe is filled with boxes of diapers and baby wipes.",
+        "crib" : "A wooden crib. What's that on the mobile?",
+        "mobile" : "Among the normal shapes hanging from the mobile is a blue key.",
+        "item" : ["key"],
+    },
+    "Bedroom" : {
+        "description" : "This appears to be an older child's bedroom. There's a classic wooden wardrobe, a\n"
+                        "twin sized bed, and posters on the walls.",
+        "north" : "Hallway",
+        "wardrobe" : "Nothing but grapic tees in here.",
+        "bed" : "A messy bed with several stuffed animals.",
+        "posters" : "A collection of band posters for groups like 'Our Biological Allure' and 'Frantic! at the Party'.",
+    },
+    "Master Bedroom" : {
+        "description" : "A large bedroom with a large classic wooden wardrobe and a queen sized bed\n"
+                        "with a night stand. There's also a window opposite the door.",
+        "south" : "Hallway",
+        "wardrobe" : "The wardrobe is half filled with blouses and half filled with dress shirts.",
+        "bed" : "A queen sized bed that is neatly made with a blue duvet.",
+        "night stand" : "It's empty.",
+        "window" : "From the second floor, I can see the whole back yard from this window. A wooden\n"
+                   "privacy fence surrounds a green lawn and a large tree stump. At the far end of the\n"
+                   "yard in the corner is a small painted shed.",
+    },
+    "Bathroom" : {
+        "description" : "A standard bathroom with a bathtub, toilet, sink, and medicine cabinet.",
+        "north" : "Hallway",
+        "bathtub" : "Yup, that's a bathtub.",
+        "toilet" : "Yup, that's a toilet.",
+        "sink" : "Yup, that's a sink.",
+        "cabinet" : "It's empty.",
+    },
+    "Staircase" : {
+        "description" : "Up we go to the next floor.....",
+        "next_floor" : fourth_floor,
+    },
+}
 
 
 second_floor = {
     "Landing" : {
-        "description" : "A small landing with a single door to the east",
+        "description" : "A small landing with a single door to the east.",
         "east" : "Hallway",
     },
     "Hallway" : {
         "locked" : True,
         "description" : "A long hallway with pictures lining the walls. There's a green door at the east end.\n"
                         "There are two bedroom doors along the north wall (Northwest and Northeast)\n"
-                        "as well as doors to the Master Bedroom and Bathroom along the south wall (Southwest and Southeast).",
+                        "as well as a bedroom door and bathroom door along the south wall (Southwest and Southeast).",
         "west" : "Landing",
         "east" : "Staircase",
+        "northwest" : "Guest Room",
+        "southwest" : "Bedroom",
+        "northeast" : "Master Bedroom",
+        "southeast" : "Bathroom",
+        "pictures" : "insert lore here",
+    },
+    "Guest Room" : {
+        "description" : "An empty bedroom except for a classic wooden wardrobe and a twin sized bed.",
+        "south" : "Hallway",
+        "wardrobe" : "The wardrobe is empty.",
+        "bed" : "A twin sized bed that is neatly made with a beige duvet.",
+    },
+    "Bedroom" : {
+        "description" : "Clearly a child's bedroom. There's a classic wooden wardrobe, a twin sized bed\n"
+                        "and a toy box.",
+        "north" : "Hallway",
+        "wardrobe" : "The wardrobe is filled with children's clothes.",
+        "bed" : "An un-made twin sized bed with a duvet covered in cartoon characters.",
+        "toy box" : "A plastic toy box filled with action figures. A small toy soldier catches my eye.",
+        "toy soldier" : "Something about this seems familiar. Should I bring it with me?",
+        "item" : ["toy soldier"],
+    },
+    "Master Bedroom" : {
+        "description" : "A large bedroom with a large classic wooden wardrobe and a queen sized bed\n"
+                        "with a night stand. There's also a window opposite the door.",
+        "south" : "Hallway",
+        "wardrobe" : "The wardrobe is half filled with blouses and half filled with dress shirts.",
+        "bed" : "A queen sized bed that is neatly made with a green duvet.",
+        "night stand" : "Inside the drawer of the night stand is a green key.",
+        "window" : "From the second floor, I can see the whole back yard from this window. A wooden\n"
+                   "privacy fence surrounds a fresh-cut lawn and a large oak tree. At the far end of\n"
+                   "the yard in the corner is a small freshly-painted shed.",
+        "item" : ["key"],
+    },
+    "Bathroom" : {
+        "description" : "A standard bathroom with a bathtub, toilet, sink, and medicine cabinet.",
+        "north" : "Hallway",
+        "bathtub" : "Yup, that's a bathtub.",
+        "toilet" : "Yup, that's a toilet.",
+        "sink" : "Yup, that's a sink.",
+        "cabinet" : "Inside the cabinet is a first aid kit.",
+        "item" : ["first aid kit"],
+    },
+    "Staircase" : {
+        "description" : "Up we go to the next floor.....",
+        "next_floor" : third_floor,
     }
 }
 
 
 ground_floor = {
     "Entryway": {
-        "description" : "The entryway is pretty basic with nothing of note besides doors to the north and west",
+        "description" : "The entryway is pretty basic with nothing of note besides doors to the north and west.",
         "north" : "Hallway",
         "west" : "Closet",
     },
     "Closet" : {
-        "description" : "A standard coat closet with a single coat inside",
+        "description" : "A standard coat closet with a single coat inside.",
         "east" : "Entryway",
-        "coat" : "A long heavy coat with large pockets",
-        "pockets" : "Inside one of the pockets is a keycard",
+        "coat" : "A long heavy coat with large pockets.",
+        "pockets" : "Inside one of the pockets is a keycard.",
         "item" : ["keycard"],
     },
     "Hallway" : {
@@ -42,37 +281,38 @@ ground_floor = {
     },
     "Study" : {
         "locked" : True,
-        "description" : "A simple study with a desk and a bookshelf",
+        "description" : "A simple study with a desk and a bookshelf.",
         "west" : "Safe Room",
         "east" : "Hallway",
-        "desk" : "On the desk is a framed picture and a file folder with a document inside",
+        "desk" : "On the desk is a framed picture and a file folder with a document inside.",
         "picture" : "insert lore here",
         "document" : "insert lore here",
-        "bookshelf" : "A large bookshelf with many generic books. Three books stand out, one blue, one green, and one red",
-        "blue" : "An encyclopedia on ocean creatures",
-        "green" : "An album of family photos",
-        "red" : "I heard a click on the west side of the room",
+        "bookshelf" : "A large bookshelf with many generic books. Three books stand out, one green, one blue, and one red.",
+        "blue" : "An encyclopedia on ocean creatures.",
+        "green" : "An album of family photos.",
+        "red" : "I heard a click on the west side of the room.",
     },
     "Safe Room" : {
-        "description" : "A small hidden room. Inside is a collection of pictures and a revolver",
+        "description" : "A small hidden room. Inside is a collection of pictures and a revolver.",
         "east" : "Study",
         "item" : ["revolver"],
+        "revolver" : "A standard six-shooter.",
         "pictures" : "insert lore here",
     },
     "Dining Room" : {
-        "description" : "A large dining room with a table and an old wooden hutch. The kitchen is to the east",
+        "description" : "A large dining room with a table and an old wooden hutch. The kitchen is to the east.",
         "east" : "Kitchen",
         "south" : "Hallway",
-        "table" : "A dining room table set for a family of four",
-        "hutch" : "An old wooden hutch with two drawers with brass handles",
-        "drawers" : "Inside one of the drawers there is a yellow key",
+        "table" : "A dining room table set for a family of four.",
+        "hutch" : "An old wooden hutch with two drawers with brass handles.",
+        "drawers" : "Inside one of the drawers there is a yellow key.",
         "item" : ["key"],
     },
     "Kitchen" : {
-        "description" : "A modest kitchen with an old refrigerator and a decent amount of counter space",
+        "description" : "A modest kitchen with an old refrigerator and a decent amount of counter space.",
         "west" : "Dining Room",
-        "counter" : "On the counter there's a protein bar",
-        "refrigerator" : "Inside the fridge there's a can of soda",
+        "counter" : "On the counter there's a protein bar.",
+        "refrigerator" : "Inside the fridge there's a case of soda.",
         "item" : ["protein bar", "soda"]
     },
     "Staircase" : {
