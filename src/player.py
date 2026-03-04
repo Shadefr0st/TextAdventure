@@ -1,14 +1,10 @@
 class Player:
     def __init__(self, name):
         self.__name = name
-        self.__health = 100
         self.__inventory = []
     
     def get_name(self):
         return self.__name
-    
-    def get_health(self):
-        return self.__health
     
     def get_inventory(self):
         return self.__inventory

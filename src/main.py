@@ -1,10 +1,15 @@
 from player import Player
 import os
-from maps import ground_floor, second_floor
+from maps import ground_floor, second_floor, third_floor, fourth_floor, fifth_floor, attic
 
 
 
 compass = ["north", "south", "east", "west", "northwest", "northeast", "southwest", "southeast"]
+soldiers = False
+eat = False
+drink = False
+fix_doll = False
+shoot_globe = False
 
 def start():
     name = input("Welcome! What's your name?\n")
@@ -24,6 +29,11 @@ def clear():
 
 
 def main(player):
+    global soldiers
+    global eat
+    global drink
+    global fix_doll
+    global shoot_globe
     current_room = 'Entryway'
     current_floor = ground_floor
     while True:
@@ -41,7 +51,7 @@ def main(player):
             break
         action = action.split(" ", 1)
         if len(action) < 2:
-            print("Action must be paired with a target")
+            print("Action must be paired with a target.")
             input("press enter to continue.....")
             continue
         match(action[0]):
@@ -52,34 +62,48 @@ def main(player):
                     continue
                 if action[1] in current_floor[current_room] and action[1]:
                     if (current_floor[current_room][action[1]] == "Safe Room" and current_floor["Study"]["locked"] == True):
-                        print("The room is locked")
+                        print("The room is locked.")
                         input("press enter to continue.....")
                     elif (current_floor[current_room][action[1]] == "Staircase" and current_floor["Hallway"]["locked"] == True):
-                        print("The door is locked")
+                        print("The door is locked.")
                         input("press enter to continue.....")
                     elif (current_floor[current_room][action[1]] == "Staircase" and current_floor["Hallway"]["locked"] == False):
                         print(f"{current_floor["Staircase"]["description"]}")
                         current_floor = current_floor["Staircase"]["next_floor"]
                         current_room = "Landing"
                         input("press enter to continue.....")
+                    elif (current_floor[current_room][action[1]] == "Kid's Room" and current_floor == fifth_floor and fifth_floor["Hallway"]["nlocked"] == True):
+                        print("The room is locked.")
+                        input("press enter to continue.....")
                     else:
                         current_room = current_floor[current_room][action[1]]
                 else:
-                    print("You can't go that way!")
+                    print("I can't go that way!")
                     input("press enter to continue.....")
             case "look":
+                if current_room == "Attic":
+                    if attic["Attic"]["dark"] == True and action[1] != "light switch":
+                        print("It's too dark to see.")
+                        input("press enter to continue.....")
+                        continue
                 if action[1] in current_floor[current_room]:
                     print(current_floor[current_room][action[1]])
                     if current_room == "Study":
                         if action[1] == "red":
                             ground_floor["Study"]["locked"] = False
+                            ground_floor["Study"]["red"] = "Pulling on this book opened something on the west side of the room."
+                    if current_room == "Attic":
+                        if action[1] == "light switch" and attic["Attic"]["dark"] == True:
+                            attic["Attic"]["dark"] = False
+                            attic["Attic"]["description"] = "The attic is now illuminated except for a dark spot in the corner. There's a doll\nin the middle of the room."
+                            attic["Attic"]["light switch"] = "I already turned the lights on."
                     input("press enter to continue.....")
                 else:
-                    print("Nothing to see here")
+                    print("Nothing to see here.")
                     input("press enter to continue.....")
             case "take":
                 if "item" not in current_floor[current_room]:
-                    print("There's nothing to take")
+                    print("There's nothing to take.")
                     input("press enter to continue.....")
                 else:
                     if action[1] in current_floor[current_room]["item"]:
@@ -89,28 +113,78 @@ def main(player):
                         print("I can't take that")
                         input("press enter to continue.....")
             case "use":
-                if action[1] == "key":
-                    if current_room == "Hallway":
-                        if current_floor["Hallway"]["locked"] == True:
-                            if "key" in player.get_inventory():
-                                print("The door to the staircase unlocks")
-                                current_floor["Hallway"]["locked"] = False
-                                player.remove_inventory("key")
-                                input("press enter to continue.....")
-                            else:
-                                print("I don't have the key")
-                                input("press enter to continue.....")
-                        else:
-                            print("The door isn't locked")
-                            input("press enter to continue.....")
-                    else:
-                        print("I can't use that here")
-                        input("press enter to continue.....")
-                elif action[1] not in player.get_inventory():
-                    print("I don't have that")
+                if action[1] not in player.get_inventory():
+                    print("I don't have that.")
                     input("press enter to continue.....")
+                elif action[1] == "key" and current_room == "Hallway":
+                    print("The door to the staircase unlocks.")
+                    current_floor["Hallway"]["locked"] = False
+                    player.remove_inventory("key")
+                    input("press enter to continue.....")
+                elif action[1] == "keycard" and current_floor == fifth_floor and current_room == "Hallway":
+                    print("The bedroom to the Northwest unlocks.")
+                    fifth_floor["Hallway"]["nlocked"] = False
+                    player.remove_inventory("keycard")
+                    input("press enter to continue.....")
+                elif action[1] == "toy soldier" and current_floor == fifth_floor and current_room == "Kid's Room":
+                    print("I place the toy soldier in line with the others.")
+                    player.remove_inventory("toy soldier")
+                    soldiers = True
+                    fifth_floor["Kid's Room"]["toy box"] = "Four toy soldiers all in a row."
+                    input("press enter to continue.....")
+                elif current_floor == attic:
+                    if current_room == "Landing":
+                        if action[1] == "protein bar":
+                            player.remove_inventory("protein bar")
+                            print("A nice snack.")
+                            eat = True
+                            if drink == False:
+                                attic["Landing"]["description"] = "A small landing with a single door to the east. After all this climbing, I'm feeling\na bit parched."
+                            else:
+                                attic["Landing"]["description"] = "A small landing with a single door to the east."
+                            input("press enter to continue.....")
+                        elif action[1] == "soda":
+                            player.remove_inventory("soda")
+                            print("Refreshing!")
+                            drink = True
+                            if eat == False:
+                                attic["Landing"]["description"] = "A small landing with a single door to the east. After all this climbing, I'm feeling\na bit peckish."
+                            else:
+                                attic["Landing"]["description"] = "A small landing with a single door to the east."
+                            input("press enter to continue.....")
+                    elif current_room == "Attic":
+                        if attic["Attic"]["dark"] == True:
+                            print("It's too dark to see.")
+                            input("press enter to continue.....")
+                            continue
+                        else:
+                            if action[1] == "first aid kit":
+                                player.remove_inventory("first aid kit")
+                                print("I use the first aid kit to sew up the doll. She's good as new.")
+                                attic["Attic"]["doll"] = "A soft cloth doll. She's in recovery."
+                                fix_doll = True
+                                input("press enter to continue.....")
+                            elif action[1] == "flashlight":
+                                player.remove_inventory("flashlight")
+                                print("I illuminate the dark corner of the room.")
+                                attic["Attic"]["still_dark"] = False
+                                attic["Attic"]["description"] = "The attic is now fully illuminated. There's a doll in the middle of the\nroom and a snow globe in the corner where my flashlight is pointing."
+                                attic["Attic"]["snow globe"] = "Inside the globe is a perfect recreation of this house."
+                                input("press enter to continue.....")
+                            elif action[1] == "revolver" and attic["Attic"]["still_dark"] == False:
+                                if "bullets" in player.get_inventory():
+                                    player.remove_inventory("bullets")
+                                    print("I fire at the snow globe and it shatters. What remains is a glowing white orb where the globe once was.")
+                                    attic["Attic"]["description"] = "The attic is now fully illuminated. There's a doll in the middle of the\nroom and a white orb in the corner where my flashlight is pointing."
+                                    attic["Attic"]["snow globe"] = "It's been destoryed."
+                                    attic["Attic"]["orb"] = "A glowing white orb where the snow globe once was."
+                                    shoot_globe = True
+                                    input("press enter to continue.....")
+                                else:
+                                    print("The gun clicks. It's empty.")
+                                    input("press enter to continue.....")
                 else:
-                    print("I can't use that here")
+                    print("I can't use that here.")
                     input("press enter to continue.....")
             case _:
                 print("invalid input")

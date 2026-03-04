@@ -1,5 +1,5 @@
-Thanks for trying my game! I have all of the controls mostly implemented every stage besides the final stage is present.
-I still need to add the rest of the floors and the "flavor" of the game (ie. lore and other details).
+Thanks for trying my game! I have all of the controls implemented and every stage is present.
+I still need to add the rest of the "flavor" of the game (ie. lore and other details).
 So far, it's started just by running main.py. I'll add a better introduction with directions on how to
 play later, but for now I'll just list the controls below. 
 
@@ -17,6 +17,5 @@ Use: the 'use' command will use an item from your inventory. Currently, the only
 
 Exit: Exits the game.
 
-As far as I know, these all work as intended and I've done my best to prevent errors (I fixed an error caused by 
-using 'go' on an item and it causing the game to crash). I will later add a 'help' command that will provide the
-player with the controls.
+As far as I know, these all work as intended and I've done my best to prevent errors. I will later add a 'help' 
+command that will provide the player with the controls.

@@ -1,7 +1,27 @@
+from player import Player
+
 attic = {
     "Landing" : {
-        "description" : "A small landing with a single door to the east.",
+        "description" : "A small landing with a single door to the east. After all this climbing, I'm feeling\n"
+                        "peckish and a bit parched.",
+        "east" : "Attic",
     },
+    "Attic" : {
+        "dark" : True,
+        "still_dark" : True,
+        "description" : "It's pitch black in here. On the wall next to me is a light switch and I can see a faint\n"
+                        "light coming from under the door on the east end of the room.",
+        "west" : "Landing",
+        "east" : "Ending",
+        "light switch" : "I flip the switch and illuminate the room.",
+        "corner" : "I think there's something over there, but it's too dark to see.",
+        "doll" : "A soft cloth doll with its torso flayed open.",
+        "snow globe" : "Nothing to see here.",
+        "orb" : "Nothing to see here.",
+    },
+    "Ending" : {
+        "description" : "Placeholder for the ending. Enter the command 'exit' to exit the game."
+    }
 }
 
 
@@ -113,10 +133,11 @@ fourth_floor = {
         "south" : "Hallway",
         "wardrobe" : "The wardrobe is half filled with blouses and half filled with dress shirts.",
         "bed" : "A queen sized bed that is neatly made with a red duvet.",
-        "night stand" : "It's empty.", #I'm gonna add bullets here later
+        "night stand" : "There's bullets here. Perfect for a revolver.",
         "window" : "From the second floor, I can see the whole back yard from this window. A wooden\n"
                    "privacy fence surrounds a slightly long lawn and a large tree stump. Towards the\n"
                    "back of the yard is a swing set, and in the back corner is a small shed.",
+        "item" : ["bullets"],
     },
     "Bathroom" : {
         "description" : "A standard bathroom with a bathtub, toilet, sink, and medicine cabinet.",
