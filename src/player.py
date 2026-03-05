@@ -1,7 +1,7 @@
 class Player:
     def __init__(self, name):
         self.__name = name
-        self.__inventory = []
+        self.__inventory = ["ID card"]
     
     def get_name(self):
         return self.__name

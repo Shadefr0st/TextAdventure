@@ -43,7 +43,7 @@ fifth_floor = {
         "northeast" : "Master Bedroom",
         "southwest" : "Office",
         "southeast" : "Bathroom",
-        "pictures" : "insert lore here",
+        "pictures" : "Torn family photos. I'm in most of them.",
     },
     "Kid's Room" : {
         "description" : "A young child's bedroom. There's a classic wooden wardrobe, a twin sized bed, and\n"
@@ -61,7 +61,7 @@ fifth_floor = {
         "wardrobe" : "It's empty.",
         "bed" : "A neatly made twin sized bed with a beige duvet.",
         "desk" : "An old ornate wooden desk. It's bare except for a leather-bound journal.",
-        "journal" : "insert lore here",
+        "journal" : "It sits open on an entry for December 2nd. It just says 'I'm sorry' over and over.\nDid I write this?",
     },
     "Master Bedroom" : {
         "description" : "A large bedroom with a large classic wooden wardrobe and a queen sized bed\n"
@@ -107,7 +107,7 @@ fourth_floor = {
         "northeast" : "Master Bedroom",
         "southwest" : "Teen's Room",
         "southeast" : "Bathroom",
-        "pictures" : "insert lore here",
+        "pictures" : "Family pictures of a family of four; a married couple, a thirteen-year-old, and a four-year-old. I'm the husband in these.",
     },
     "Kid's Room" : {
         "description" : "A young child's bedroom. There's a classic wooden wardrobe, a twin sized bed, and\n"
@@ -133,7 +133,7 @@ fourth_floor = {
         "south" : "Hallway",
         "wardrobe" : "The wardrobe is half filled with blouses and half filled with dress shirts.",
         "bed" : "A queen sized bed that is neatly made with a red duvet.",
-        "night stand" : "There's bullets here. Perfect for a revolver.",
+        "night stand" : "There's bullets here. Looks like they fit a revolver.",
         "window" : "From the second floor, I can see the whole back yard from this window. A wooden\n"
                    "privacy fence surrounds a slightly long lawn and a large tree stump. Towards the\n"
                    "back of the yard is a swing set, and in the back corner is a small shed.",
@@ -171,7 +171,7 @@ third_floor = {
         "northeast" : "Master Bedroom",
         "southwest" : "Bedroom",
         "southeast" : "Bathroom",
-        "pictures" : "insert lore here",
+        "pictures" : "Family pictures of a family of four; a married couple, a ten-year-old, and an infant. I'm the husband in these.",
     },
     "Nursery" : {
         "description" : "A nursery with a classic wooden wardrobe and a crib.",
@@ -231,7 +231,7 @@ second_floor = {
         "southwest" : "Bedroom",
         "northeast" : "Master Bedroom",
         "southeast" : "Bathroom",
-        "pictures" : "insert lore here",
+        "pictures" : "Family pictures of a family of three; a married couple and a seven-year-old. I'm the husband in these.",
     },
     "Guest Room" : {
         "description" : "An empty bedroom except for a classic wooden wardrobe and a twin sized bed.",
@@ -298,7 +298,7 @@ ground_floor = {
         "west" : "Study",
         "east" : "Staircase",
         "south" : "Entryway",
-        "pictures" : "insert lore here",
+        "pictures" : "Family pictures of a family of four throughout the years. Wedding photos, baby pictures, etc.\nI appear to be the patriarch.",
     },
     "Study" : {
         "locked" : True,
@@ -306,8 +306,8 @@ ground_floor = {
         "west" : "Safe Room",
         "east" : "Hallway",
         "desk" : "On the desk is a framed picture and a file folder with a document inside.",
-        "picture" : "insert lore here",
-        "document" : "insert lore here",
+        "picture" : "Two young boys, they appear to be about four and thirteen.",
+        "document" : "It's a legal document of some kind but most of it is redacted.",
         "bookshelf" : "A large bookshelf with many generic books. Three books stand out, one green, one blue, and one red.",
         "blue" : "An encyclopedia on ocean creatures.",
         "green" : "An album of family photos.",
@@ -318,7 +318,7 @@ ground_floor = {
         "east" : "Study",
         "item" : ["revolver"],
         "revolver" : "A standard six-shooter.",
-        "pictures" : "insert lore here",
+        "pictures" : "A collection of family photos, but all of the faces are blurred.",
     },
     "Dining Room" : {
         "description" : "A large dining room with a table and an old wooden hutch. The kitchen is to the east.",

@@ -1,43 +1,47 @@
 from player import Player
 import os
 from maps import ground_floor, second_floor, third_floor, fourth_floor, fifth_floor, attic
+from help import controls
+from endings import endings, ending_checks
 
 
 
 compass = ["north", "south", "east", "west", "northwest", "northeast", "southwest", "southeast"]
-soldiers = False
-eat = False
-drink = False
-fix_doll = False
-shoot_globe = False
 
 def start():
-    name = input("Welcome! What's your name?\n")
+    print("I wake up on a porch in the dark of night. I can't remember a thing. There's an ID in my pocket.")
+    name = input("What does it say? ")
     player = Player(name)
-    print(f"Nice to meet you {player.get_name()}!")
-    begin = input("I could use your help. Are you ready to begin? (y/n)\n")
-    if begin.lower() == "y":
-        print(f"Great! I'm looking forward to working with you.")
-        print(f"-" * 27)
-        input("Press enter to continue.....")
-        return player
-    else:
-        exit()
+    while True:
+        clear()
+        print(f"So my name is {player.get_name()}. Is this my house?")
+        begin = input("There's only one way to find out. Should I go inside? (y/n)")
+        clear()
+        if begin.lower() == "y":
+            print(f"I need to figure out what's going on here.")
+            input("press enter to continue.....")
+            return player
+        elif begin.lower() == "n":
+            print("What a shame.")
+            input("press enter to continue.....")
+            exit()
+        else:
+            print("Invalid input")
+            input("press enter to continue.....")
+            continue
+
 
 def clear():
-    os.system('clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def main(player):
-    global soldiers
-    global eat
-    global drink
-    global fix_doll
-    global shoot_globe
     current_room = 'Entryway'
     current_floor = ground_floor
     while True:
         clear()
+        if current_room == "Ending":
+            ending()
         print(f"I am in the {current_room}")
         print(current_floor[current_room]["description"])
         print(f"-" * 27)
@@ -49,6 +53,10 @@ def main(player):
         if action == "exit":
             clear()
             break
+        if action == "help":
+            print(controls)
+            input("press enter to continue.....")
+            continue
         action = action.split(" ", 1)
         if len(action) < 2:
             print("Action must be paired with a target.")
@@ -95,7 +103,7 @@ def main(player):
                     if current_room == "Attic":
                         if action[1] == "light switch" and attic["Attic"]["dark"] == True:
                             attic["Attic"]["dark"] = False
-                            attic["Attic"]["description"] = "The attic is now illuminated except for a dark spot in the corner. There's a doll\nin the middle of the room."
+                            attic["Attic"]["description"] = "The attic is now illuminated except for a dark spot in the corner. There's a doll\nin the middle of the room and a door on the east end."
                             attic["Attic"]["light switch"] = "I already turned the lights on."
                     input("press enter to continue.....")
                 else:
@@ -129,7 +137,7 @@ def main(player):
                 elif action[1] == "toy soldier" and current_floor == fifth_floor and current_room == "Kid's Room":
                     print("I place the toy soldier in line with the others.")
                     player.remove_inventory("toy soldier")
-                    soldiers = True
+                    ending_checks["soldiers"] = True
                     fifth_floor["Kid's Room"]["toy box"] = "Four toy soldiers all in a row."
                     input("press enter to continue.....")
                 elif current_floor == attic:
@@ -137,8 +145,8 @@ def main(player):
                         if action[1] == "protein bar":
                             player.remove_inventory("protein bar")
                             print("A nice snack.")
-                            eat = True
-                            if drink == False:
+                            ending_checks["eat"] = True
+                            if ending_checks["drink"] == False:
                                 attic["Landing"]["description"] = "A small landing with a single door to the east. After all this climbing, I'm feeling\na bit parched."
                             else:
                                 attic["Landing"]["description"] = "A small landing with a single door to the east."
@@ -146,8 +154,8 @@ def main(player):
                         elif action[1] == "soda":
                             player.remove_inventory("soda")
                             print("Refreshing!")
-                            drink = True
-                            if eat == False:
+                            ending_checks["drink"] = True
+                            if ending_checks["eat"] == False:
                                 attic["Landing"]["description"] = "A small landing with a single door to the east. After all this climbing, I'm feeling\na bit peckish."
                             else:
                                 attic["Landing"]["description"] = "A small landing with a single door to the east."
@@ -162,13 +170,13 @@ def main(player):
                                 player.remove_inventory("first aid kit")
                                 print("I use the first aid kit to sew up the doll. She's good as new.")
                                 attic["Attic"]["doll"] = "A soft cloth doll. She's in recovery."
-                                fix_doll = True
+                                ending_checks["fix_doll"] = True
                                 input("press enter to continue.....")
                             elif action[1] == "flashlight":
                                 player.remove_inventory("flashlight")
                                 print("I illuminate the dark corner of the room.")
                                 attic["Attic"]["still_dark"] = False
-                                attic["Attic"]["description"] = "The attic is now fully illuminated. There's a doll in the middle of the\nroom and a snow globe in the corner where my flashlight is pointing."
+                                attic["Attic"]["description"] = "The attic is now fully illuminated. There's a doll in the middle of the\nroom and a snow globe in the corner where my flashlight is pointing. There's\nalso a door at the east end of the room."
                                 attic["Attic"]["snow globe"] = "Inside the globe is a perfect recreation of this house."
                                 input("press enter to continue.....")
                             elif action[1] == "revolver" and attic["Attic"]["still_dark"] == False:
@@ -178,7 +186,7 @@ def main(player):
                                     attic["Attic"]["description"] = "The attic is now fully illuminated. There's a doll in the middle of the\nroom and a white orb in the corner where my flashlight is pointing."
                                     attic["Attic"]["snow globe"] = "It's been destoryed."
                                     attic["Attic"]["orb"] = "A glowing white orb where the snow globe once was."
-                                    shoot_globe = True
+                                    ending_checks["shoot_globe"] = True
                                     input("press enter to continue.....")
                                 else:
                                     print("The gun clicks. It's empty.")
@@ -190,6 +198,23 @@ def main(player):
                 print("invalid input")
                 input("press enter to continue.....")
 
+def ending():
+    ending_check_count = 0
+    for checks in ending_checks:
+        if ending_checks[checks] == True:
+            ending_check_count += 1
+    if ending_check_count == 0:
+        print(endings["bad ending"])
+        input("press enter to continue.....")
+    elif ending_check_count == 5:
+        print(endings["good ending"])
+        input("press enter to continue.....")
+    else:
+        print(endings["neutral ending"])
+        input("press enter to continue.....")
+    clear()
+    print("Thanks for playing! This was one of three endings. Play again to try for a different ending!")
+    exit()
 
 clear()
 player = start()
